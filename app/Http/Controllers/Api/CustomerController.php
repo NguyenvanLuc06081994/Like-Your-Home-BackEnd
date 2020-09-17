@@ -26,7 +26,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        return Customer::creat($request->all());
+        return Customer::create($request->all());
     }
 
     /**
