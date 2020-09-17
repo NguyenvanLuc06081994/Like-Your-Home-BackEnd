@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('customers', [\App\Http\Controllers\Api\CustomerController::class, 'index']);
+Route::post('customers', [\App\Http\Controllers\Api\CustomerController::class, 'store']);
+Route::put('customers/{customer}', [\App\Http\Controllers\Api\CustomerController::class, 'update']);
+Route::get('customers/{customer}', [\App\Http\Controllers\Api\CustomerController::class, 'show']);
+Route::delete('customers/{customer}', [\App\Http\Controllers\Api\CustomerController::class, 'destroy']);
+Route::patch('customers/{customer}', [\App\Http\Controllers\Api\CustomerController::class, 'update']);
