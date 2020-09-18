@@ -23,3 +23,10 @@ Route::put('customers/{customer}', [\App\Http\Controllers\Api\CustomerController
 Route::get('customers/{customer}', [\App\Http\Controllers\Api\CustomerController::class, 'show']);
 Route::delete('customers/{customer}', [\App\Http\Controllers\Api\CustomerController::class, 'destroy']);
 Route::patch('customers/{customer}', [\App\Http\Controllers\Api\CustomerController::class, 'update']);
+
+Route::get('houses', [\App\Http\Controllers\Api\HouseController::class, 'index']);
+Route::post('houses', [\App\Http\Controllers\Api\HouseController::class, 'store']);
+Route::put('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'update']);
+Route::get('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'show']);
+Route::delete('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'destroy']);
+Route::patch('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'update']);
