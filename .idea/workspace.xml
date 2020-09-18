@@ -21,11 +21,21 @@
   <component name="ChangeListManager">
     <list default="true" id="06f7a5d1-8701-479d-a247-7c659dad9419" name="Default Changelist" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" afterDir="false" />
 >>>>>>> 856522cc22df61df461cf94919cf3078f4d29186
+=======
+      <change afterPath="$PROJECT_DIR$/app/House.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/HouseController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_09_17_180354_create_house_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/HouseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+>>>>>>> 96fcdd4b4f6f2b1a35745b551d0f7b294ec880d1
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,11 +189,16 @@
       <workItem from="1600313809679" duration="896000" />
       <workItem from="1600331611232" duration="318000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1600332588614" duration="1502000" />
       <workItem from="1600335844425" duration="1092000" />
 =======
       <workItem from="1600332588614" duration="2985000" />
 >>>>>>> 856522cc22df61df461cf94919cf3078f4d29186
+=======
+      <workItem from="1600332588614" duration="4750000" />
+      <workItem from="1600354558379" duration="5749000" />
+>>>>>>> 96fcdd4b4f6f2b1a35745b551d0f7b294ec880d1
     </task>
     <servers />
   </component>
