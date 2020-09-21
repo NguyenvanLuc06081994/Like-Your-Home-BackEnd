@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -81,20 +81,28 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        $user = $this->user->create([
-            'username' => $request->get('username'),
-            'email' => $request->get('email'),
-            'phone' => $request->get('phone'),
-            'address' => $request->get('address'),
-            'image' => $request->get('image'),
-            'password' => Hash::make($request->get('password'))
-        ]);
-
+        $user = new User();
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->password = Hash::make($request->get('password'));
+        if (!$request->hasFile('image')) {
+            $user->image = $request->inputFile;
+        } else {
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $newFileName = "$fileName";
+            $request->file('image')->storeAs('public/images', $newFileName);
+            $user->image = $newFileName;
+        }
+        $user->save();
         return response()->json([
             'status' => 200,
             'message' => 'User created successfully',
             'data' => $user
         ]);
+
     }
 
     public function login(Request $request)
