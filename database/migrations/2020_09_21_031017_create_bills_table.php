@@ -23,7 +23,7 @@ class CreateBillsTable extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('house_id');
 
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('users');
             $table->foreign('house_id')->references('id')->on('houses');
             $table->timestamps();
         });
