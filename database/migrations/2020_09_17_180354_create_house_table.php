@@ -22,10 +22,11 @@ class CreateHouseTable extends Migration
             $table->bigInteger('bedroom');
             $table->bigInteger('bathroom');
             $table->text('description');
+            $table->string('status');
             $table->bigInteger('price');
             $table->string('image');
             $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
