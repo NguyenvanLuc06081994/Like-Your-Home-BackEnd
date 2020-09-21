@@ -86,7 +86,6 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->address = $request->address;
-        $user->password = Hash::make($request->get('password'));
         if (!$request->hasFile('image')) {
             $user->image = $request->inputFile;
         } else {
@@ -96,7 +95,10 @@ class UserController extends Controller
             $request->file('image')->storeAs('public/images', $newFileName);
             $user->image = $newFileName;
         }
+        $user->password = Hash::make($request->password);
         $user->save();
+
+
         return response()->json([
             'status' => 200,
             'message' => 'User created successfully',
