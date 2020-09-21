@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -98,11 +98,13 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+
         return response()->json([
             'status' => 200,
             'message' => 'User created successfully',
             'data' => $user
         ]);
+
     }
 
     public function login(Request $request)
