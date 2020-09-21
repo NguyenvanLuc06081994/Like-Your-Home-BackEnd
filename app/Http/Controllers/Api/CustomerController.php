@@ -6,6 +6,7 @@ use App\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Validation\Validator;
 
 class CustomerController extends Controller
 {
@@ -23,18 +24,29 @@ class CustomerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        return Customer::create([
-            'username' => $request['username'],
-            'email' => $request['email'],
-            'phone' => $request['phone'],
-            'address' => $request['address'],
-            'password' => Hash::make($request['password']),
-            'image' => $request['image']
-        ]);
+        $customer = new Customer();
+        $customer->username = $request->username;
+        $customer->email = $request->email;
+        $customer->phone = $request->phone;
+        $customer->address = $request->address;
+        $customer->password = $request->password;
+
+        // Nếu file không tồn tại thì trường image gán bằng NULL
+        if (!$request->hasFile('image')) {
+            $customer->image = $request->inputFile;
+        } else {
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $newFileName = "$fileName";
+            $request->file('image')->storeAs('public/images', $newFileName);
+            $customer->image = $newFileName;
+        }
+        $customer->save();
+
     }
 
     /**
