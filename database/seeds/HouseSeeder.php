@@ -19,6 +19,7 @@ class HouseSeeder extends Seeder
         $house->bedroom = '3';
         $house->bathroom = '2';
         $house->description = 'Phong tien nghi, sach se, co view ho Tay';
+        $house->status = 'Con phong';
         $house->price = '600000';
         $house->image = 'https://gialonghousing.com/images/products/20171261443571.JPG';
         $house->customer_id = '1';
@@ -31,6 +32,7 @@ class HouseSeeder extends Seeder
         $house->bedroom = '5';
         $house->bathroom = '3';
         $house->description = 'Phong co cho de oto, sach se, co view ho Tay';
+        $house->status = 'Con phong';
         $house->price = '900000';
         $house->image = 'https://cdn.nhadat.net/public/files/2018/08/21/posts/cho-thue-nha-quan-tay-ho-co-san-vuon-rong-va-ao-ca-dep-lung-linh-1.jpg';
         $house->customer_id = '2';

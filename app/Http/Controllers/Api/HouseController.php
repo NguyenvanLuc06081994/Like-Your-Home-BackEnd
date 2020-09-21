@@ -13,7 +13,7 @@ class HouseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return House::all();
     }
@@ -46,7 +46,7 @@ class HouseController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(House $house)
+    public function show(House $house, Request $request)
     {
         return $house;
     }
