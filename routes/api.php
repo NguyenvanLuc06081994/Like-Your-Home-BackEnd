@@ -30,3 +30,6 @@ Route::put('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 
 Route::get('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'show']);
 Route::delete('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'destroy']);
 Route::patch('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'update']);
+
+Route::get('bills',[\App\Http\Controllers\Api\BillController::class,'index']);
+Route::post('bills',[\App\Http\Controllers\Api\BillController::class,'store']);
