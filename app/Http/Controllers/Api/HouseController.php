@@ -34,6 +34,7 @@ class HouseController extends Controller
             'bedroom' => $request['bedroom'],
             'bathroom' => $request['bathroom'],
             'description' => $request['description'],
+            'status' => $request['status'],
             'price' => $request['price'],
             'image' => $request['image'],
             'customer_id' => $request['customer_id']
