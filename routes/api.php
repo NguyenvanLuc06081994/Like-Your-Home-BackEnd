@@ -32,6 +32,10 @@ Route::group(['middleware' => 'jwt.verify'], function () {
 
   Route::get('bills',[\App\Http\Controllers\Api\BillController::class,'index']);
   Route::post('bills',[\App\Http\Controllers\Api\BillController::class,'store']);
+  Route::put('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'update']);
+  Route::get('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'show']);
+  Route::delete('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'destroy']);
+  Route::patch('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'update']);
 
 
 });
