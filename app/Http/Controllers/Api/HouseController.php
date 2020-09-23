@@ -84,4 +84,5 @@ class HouseController extends Controller
     {
         $house->delete();
     }
+
 }
