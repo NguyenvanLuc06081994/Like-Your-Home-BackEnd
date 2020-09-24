@@ -56,16 +56,17 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        return $user->update($request->all());
+        $user = User::find($id);
+        $user->address = $request->address;
+        $user->username = $request->username;
+        $user->phone = $request->phone;
+        $user->save();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Update successfully'
+        ]);
     }
 
     /**
