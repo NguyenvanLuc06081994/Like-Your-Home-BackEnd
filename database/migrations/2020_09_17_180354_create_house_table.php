@@ -24,7 +24,6 @@ class CreateHouseTable extends Migration
             $table->text('description');
             $table->string('status');
             $table->bigInteger('price');
-            $table->string('image');
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users');
             $table->timestamps();
