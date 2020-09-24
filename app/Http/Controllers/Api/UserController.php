@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -120,6 +121,31 @@ class UserController extends Controller
         }
         $user = $this->auth->User();
         return response()->json(compact('token', 'user'));
+    }
+
+    public function change_password(Request $request, $id)
+    {
+        $input = $request->all();
+        $userid = $id;
+            try {
+                if ((Hash::check(request('old_password'), Auth::user()->password)) == false) {
+                    $arr = array("status" => 400, "message" => "Check your old password.", "data" => array());
+                } else if ((Hash::check(request('new_password'), Auth::user()->password)) == true) {
+                    $arr = array("status" => 400, "message" => "Please enter a password which is not similar then current password.", "data" => array());
+                } else {
+                    User::where('id', $userid)->update(['password' => Hash::make($input['new_password'])]);
+                    $arr = array("status" => 200, "message" => "Password updated successfully.", "data" => array());
+                }
+            } catch (\Exception $ex) {
+                if (isset($ex->errorInfo[2])) {
+                    $msg = $ex->errorInfo[2];
+                } else {
+                    $msg = $ex->getMessage();
+                }
+                $arr = array("status" => 400, "message" => $msg, "data" => array());
+            }
+
+        return response()->json($arr);
     }
 
 }
