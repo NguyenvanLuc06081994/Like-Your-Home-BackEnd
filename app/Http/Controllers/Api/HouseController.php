@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\House;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HouseController extends Controller
 {
@@ -26,19 +27,28 @@ class HouseController extends Controller
      */
     public function store(Request $request)
     {
-        return House::create([
-            'name' => $request['name'],
-            'type_house' => $request['type_house'],
-            'type_room' => $request['type_room'],
-            'address' => $request['address'],
-            'bedroom' => $request['bedroom'],
-            'bathroom' => $request['bathroom'],
-            'description' => $request['description'],
-            'status' => $request['status'],
-            'price' => $request['price'],
-            'image' => $request['image'],
-            'customer_id' => $request['customer_id']
-        ]);
+        $house = new House();
+        $house->name = $request->name;
+        $house->type_house = $request->type_house;
+        $house->type_room = $request->type_room;
+        $house->address = $request->address;
+        $house->bedroom = $request->bedroom;
+        $house->bathroom = $request->bathroom;
+        $house->description = $request->description;
+        $house->status = $request->status;
+        $house->price = $request->price;
+        $house->customer_id = $request->customer_id;
+        if (!$request->hasFile('image')) {
+            $house->image = $request->image;
+        } else {
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $newFileName = "$fileName";
+            $request->file('image')->storeAs('public/images', $newFileName);
+            $house->image = $newFileName;
+        }
+        $house->save();
+
     }
 
     /**
@@ -74,4 +84,5 @@ class HouseController extends Controller
     {
         $house->delete();
     }
+
 }

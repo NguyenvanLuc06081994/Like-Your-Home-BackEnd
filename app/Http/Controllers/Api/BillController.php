@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Bill;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BillController extends Controller
 {
@@ -61,5 +62,11 @@ class BillController extends Controller
     public function destroy(Bill $bill)
     {
         $bill->delete();
+    }
+
+    public function searchByCustomerId($number)
+    {
+        $bills = DB::table('bills')->where('customer_id', $number)->get();
+        return response()->json($bills);
     }
 }

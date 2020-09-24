@@ -88,7 +88,7 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
         if (!$request->hasFile('image')) {
-            $user->image = $request->inputFile;
+            $user->image = 'https://i.stack.imgur.com/l60Hf.png' ;
         } else {
             $file = $request->file('image');
             $fileName = $file->getClientOriginalName();
