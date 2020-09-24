@@ -21,7 +21,8 @@ Route::group(['middleware' => 'jwt.verify'], function () {
     Route::get('customers/{customer}', [UserController::class, 'show']);
     Route::put('customers/{customer}', [UserController::class, 'update']);
     Route::delete('customers/{customer}', [UserController::class, 'destroy']);
-    Route::patch('customers/{customer}', [\App\Http\Controllers\Api\UserController::class, 'update']);
+    Route::patch('customers/{customer}', [UserController::class, 'update']);
+    Route::patch('changePassword/{id}', [UserController::class, 'change_password']);
 
   Route::get('houses', [\App\Http\Controllers\Api\HouseController::class, 'index']);
   Route::post('houses', [\App\Http\Controllers\Api\HouseController::class, 'store']);
