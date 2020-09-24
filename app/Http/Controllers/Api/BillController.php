@@ -66,7 +66,13 @@ class BillController extends Controller
 
     public function searchByCustomerId($number)
     {
-        $bills = DB::table('bills')->where('customer_id', $number)->get();
+        $bills = Bill::where('customer_id', $number)->with('house')->get();
         return response()->json($bills);
+    }
+
+    public function getBillByHouseId($house_id)
+    {
+        $bill = Bill::where('house_id',$house_id)->with('house')->get();
+        return response() ->json($bill);
     }
 }

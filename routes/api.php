@@ -26,16 +26,18 @@ Route::group(['middleware' => 'jwt.verify'], function () {
   Route::get('houses', [\App\Http\Controllers\Api\HouseController::class, 'index']);
   Route::post('houses', [\App\Http\Controllers\Api\HouseController::class, 'store']);
   Route::put('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'update']);
-  Route::get('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'show']);
+  Route::get('houses/{house}',  [\App\Http\Controllers\Api\HouseController::class, 'show']);
   Route::delete('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'destroy']);
   Route::patch('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'update']);
+  Route::get('houses/searchci/{id}', [\App\Http\Controllers\Api\HouseController::class, 'getHouseByCustomerId']);
 
   Route::get('bills',[\App\Http\Controllers\Api\BillController::class,'index']);
   Route::post('bills',[\App\Http\Controllers\Api\BillController::class,'store']);
   Route::put('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'update']);
-  Route::get('bills/{id}',[\App\Http\Controllers\Api\BillController::class,'searchByCustomerId']);
+  Route::get('bills/searchbyci/{id}',[\App\Http\Controllers\Api\BillController::class,'searchByCustomerId']);
   Route::delete('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'destroy']);
   Route::patch('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'update']);
+  Route::get('bills/searchbyhi/{id}',[\App\Http\Controllers\Api\BillController::class,'getBillByHouseId']);
 
 });
 

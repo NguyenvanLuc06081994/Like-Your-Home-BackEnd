@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\House;
 use App\Http\Controllers\Controller;
+use Doctrine\DBAL\Schema\Table;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class HouseController extends Controller
 {
@@ -84,5 +86,12 @@ class HouseController extends Controller
     {
         $house->delete();
     }
+
+    public function getHouseByCustomerId($customer_id)
+    {
+        $houses = House::where('customer_id',$customer_id)->get();
+        return response()->json($houses);
+    }
+
 
 }
