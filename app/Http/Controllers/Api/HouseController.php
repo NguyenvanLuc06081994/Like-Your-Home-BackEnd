@@ -38,16 +38,8 @@ class HouseController extends Controller
         $house->status = $request->status;
         $house->price = $request->price;
         $house->customer_id = $request->customer_id;
-        if (!$request->hasFile('image')) {
-            $house->image = $request->image;
-        } else {
-            $file = $request->file('image');
-            $fileName = $file->getClientOriginalName();
-            $newFileName = "$fileName";
-            $request->file('image')->storeAs('public/images', $newFileName);
-            $house->image = $newFileName;
-        }
         $house->save();
+        return response()->json($house);
 
     }
 

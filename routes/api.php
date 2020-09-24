@@ -37,6 +37,11 @@ Route::group(['middleware' => 'jwt.verify'], function () {
   Route::delete('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'destroy']);
   Route::patch('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'update']);
 
+  Route::post('images',[\App\Http\Controllers\Api\ImageController::class,'store']);
+  Route::get('images',[\App\Http\Controllers\Api\ImageController::class,'index']);
+  Route::get('images/{id}',[\App\Http\Controllers\Api\ImageController::class,'getImageByHouse']);
+
+
 });
 
 
