@@ -31,6 +31,7 @@ Route::group(['middleware' => 'jwt.verify'], function () {
   Route::delete('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'destroy']);
   Route::patch('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'update']);
   Route::get('houses/searchci/{id}', [\App\Http\Controllers\Api\HouseController::class, 'getHouseByCustomerId']);
+  Route::post('houses/multiSearch', [\App\Http\Controllers\Api\HouseController::class, 'multiSearch']);
 
   Route::get('bills',[\App\Http\Controllers\Api\BillController::class,'index']);
   Route::post('bills',[\App\Http\Controllers\Api\BillController::class,'store']);

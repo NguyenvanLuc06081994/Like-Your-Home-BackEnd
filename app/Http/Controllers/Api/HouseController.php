@@ -81,9 +81,45 @@ class HouseController extends Controller
 
     public function getHouseByCustomerId($customer_id)
     {
-        $houses = House::where('customer_id',$customer_id)->get();
+        $houses = House::where('customer_id', $customer_id)->get();
         return response()->json($houses);
     }
 
+    public function multiSearch(Request $request)
+    {
+        $result = House::query();
+        if (!empty($request->name)) {
+            $result = $result->where('name', 'like', '%' . $request->name . '%');
+        }
+        if (!empty($request->type_house)) {
+            $result = $result->where('type_house', $request->type_house);
+        }
+        if (!empty($request->type_room)) {
+            $result = $result->where('type_room', $request->type_room);
+        }
+        if (!empty($request->type_room)) {
+            if ($request->price == 1) {
+                $result = $result->where('price', '<', 1000000);
+            }
+            if ($request->price == 2) {
+                $result = $result->whereBetween('price', [1000000, 2000000]);
+            }
+            if ($request->price == 3) {
+                $result = $result->where('price', '>', 2000000);
+            }
+        }
+        if (!empty($request->address)) {
+            $result = $result->where('address', 'like', '%' . $request->address . '%');
+        }
+        $data = $result->get();
+        if (empty($data)){
+            return response()->json([
+                'status' => 200,
+                'message' => 'Khong co du lieu'
+            ]);
+        }
+        return response()->json($data);
+
+    }
 
 }
