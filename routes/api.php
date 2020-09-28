@@ -4,7 +4,6 @@ use App\Http\Controllers\Api\BillController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\HouseController;
 use App\Http\Controllers\Api\ImageController;
-use App\Http\Controllers\Api\SocialController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
