@@ -88,14 +88,14 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->address = $request->address;
-        if (!$request->hasFile('image')) {
+        if (!$request->inputFile) {
             $user->image = 'https://i.stack.imgur.com/l60Hf.png';
         } else {
-            $file = $request->file('image');
-            $fileName = $file->getClientOriginalName();
-            $newFileName = $fileName;
-            $request->file('image')->storeAs('public/images', $newFileName);
-            $user->image = $newFileName;
+            $file = $request->inputFile;
+//            $fileName = $file->getClientOriginalName();
+//            $newFileName = $fileName;
+//            $request->file('inputFile')->storeAs('public/images', $newFileName);
+            $user->image = $file;
         }
         $user->password = Hash::make($request->password);
         $user->save();

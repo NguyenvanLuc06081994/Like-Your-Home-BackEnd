@@ -71,9 +71,6 @@ class ImageController extends Controller
     }
     public function getImageByHouse($id){
         $images = DB::table('images')->where('house_id', $id)->get();
-        return response()->json([
-            'status' => 200,
-            'data' => $images
-        ]);
+        return response()->json($images);
     }
 }
