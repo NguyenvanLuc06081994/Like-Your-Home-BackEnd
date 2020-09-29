@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\BillController;
+use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\HouseController;
+use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,26 +28,29 @@ Route::group(['middleware' => 'jwt.verify'], function () {
     Route::patch('customers/{customer}', [UserController::class, 'update']);
     Route::post('changePassword/{id}', [UserController::class, 'change_password']);
 
-  Route::get('houses', [\App\Http\Controllers\Api\HouseController::class, 'index']);
-  Route::post('houses', [\App\Http\Controllers\Api\HouseController::class, 'store']);
-  Route::put('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'update']);
-  Route::get('houses/{house}',  [\App\Http\Controllers\Api\HouseController::class, 'show']);
-  Route::delete('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'destroy']);
-  Route::patch('houses/{house}', [\App\Http\Controllers\Api\HouseController::class, 'update']);
-  Route::get('houses/searchci/{id}', [\App\Http\Controllers\Api\HouseController::class, 'getHouseByCustomerId']);
+  Route::get('houses', [HouseController::class, 'index']);
+  Route::post('houses', [HouseController::class, 'store']);
+  Route::put('houses/{house}', [HouseController::class, 'update']);
+  Route::get('houses/{house}',  [HouseController::class, 'show']);
+  Route::delete('houses/{house}', [HouseController::class, 'destroy']);
+  Route::patch('houses/{house}', [HouseController::class, 'update']);
+  Route::get('houses/searchci/{id}', [HouseController::class, 'getHouseByCustomerId']);
+  Route::post('houses/multiSearch', [HouseController::class, 'multiSearch']);
 
-  Route::get('bills',[\App\Http\Controllers\Api\BillController::class,'index']);
-  Route::post('bills',[\App\Http\Controllers\Api\BillController::class,'store']);
-  Route::put('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'update']);
-  Route::get('bills/searchbyci/{id}',[\App\Http\Controllers\Api\BillController::class,'searchByCustomerId']);
-  Route::delete('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'destroy']);
-  Route::patch('bills/{bill}',[\App\Http\Controllers\Api\BillController::class,'update']);
-  Route::get('bills/searchbyhi/{id}',[\App\Http\Controllers\Api\BillController::class,'getBillByHouseId']);
+  Route::get('bills',[BillController::class,'index']);
+  Route::post('bills',[BillController::class,'store']);
+  Route::put('bills/{bill}',[BillController::class,'update']);
+  Route::get('bills/searchbyci/{id}',[BillController::class,'searchByCustomerId']);
+  Route::delete('bills/{bill}',[BillController::class,'destroy']);
+  Route::patch('bills/{bill}',[BillController::class,'update']);
+  Route::get('bills/searchbyhi/{id}',[BillController::class,'getBillByHouseId']);
 
-  Route::post('images',[\App\Http\Controllers\Api\ImageController::class,'store']);
-  Route::get('images',[\App\Http\Controllers\Api\ImageController::class,'index']);
-  Route::get('images/{id}',[\App\Http\Controllers\Api\ImageController::class,'getImageByHouse']);
+  Route::post('images',[ImageController::class,'store']);
+  Route::get('images',[ImageController::class,'index']);
+  Route::get('images/{id}',[ImageController::class,'getImageByHouse']);
 
+  Route::get('comments',[CommentController::class, 'index']);
+  Route::post('comments',[CommentController::class, 'store']);
 
 });
 
