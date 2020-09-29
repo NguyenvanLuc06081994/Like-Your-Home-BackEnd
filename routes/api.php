@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//Route::get('/auth/redirect/{data}', [SocialController::class, 'redirect']);
+//Route::get('/callback/google/{data}', [SocialController::class, 'callback']);
+
+//Route::get('/login',[\App\Http\Controllers\HomeController::class,'index'])->name('login');
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::group(['middleware' => 'jwt.verify'], function () {
@@ -27,6 +31,7 @@ Route::group(['middleware' => 'jwt.verify'], function () {
     Route::delete('customers/{customer}', [UserController::class, 'destroy']);
     Route::patch('customers/{customer}', [UserController::class, 'update']);
     Route::post('changePassword/{id}', [UserController::class, 'change_password']);
+
 
   Route::get('houses', [HouseController::class, 'index']);
   Route::post('houses', [HouseController::class, 'store']);
@@ -51,6 +56,7 @@ Route::group(['middleware' => 'jwt.verify'], function () {
 
   Route::get('comments',[CommentController::class, 'index']);
   Route::post('comments',[CommentController::class, 'store']);
+
 
 });
 
